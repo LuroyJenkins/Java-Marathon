@@ -1,8 +1,8 @@
 package day6;
 
 public class Airplane {
-    String manufacturer;
-    int year, length, weight, fuel;
+    private String manufacturer;
+    private int year, length, weight, fuel;
 
     public Airplane(String manufacturer, int year, int length, int weight) {
         this.manufacturer = manufacturer;
@@ -16,9 +16,8 @@ public class Airplane {
         System.out.println("Изготовитель: "+manufacturer+", год выпуска: "+year+", длина: "+length+", вес: "+weight+", количество топлива в баке: "+fuel);
     }
 
-    public int fillUp(int n){
+    public void fillUp(int n){
         fuel += n;
-        return fuel;
     }
 
     public void setManufacturer(String manufacturer) {

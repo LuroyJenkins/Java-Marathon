@@ -22,11 +22,9 @@ public class Teacher {
             case(4):
                 grade = "хорошо";
                 break;
-            case(5):
+            default:
                 grade = "отлично";
                 break;
-            default:
-                grade = "неявка";
         }
 
         System.out.println("Преподаватель " + this.name + " оценил студента с именем " + student.getName()
