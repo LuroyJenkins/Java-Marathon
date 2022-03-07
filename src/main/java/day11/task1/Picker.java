@@ -3,9 +3,8 @@ package day11.task1;
 public class Picker implements Worker {
     private boolean isPayed;
     private int salary;
-    private static final int paymentForPicker =  80;
-    private static final int bonus = 70000;
-    private static int countPickers;
+    private static final int PAYMENT_FOR_PICKER =  80;
+    private static final int BONUS = 70000;
     private Warehouse warehouse;
 
     public Picker(Warehouse warehouse) {
@@ -32,7 +31,7 @@ public class Picker implements Worker {
 
     @Override
     public void doWork() {
-        salary += paymentForPicker;
+        salary += PAYMENT_FOR_PICKER;
         warehouse.setCountPickedOrders(warehouse.getCountPickedOrders()+1);
     }
 
@@ -42,7 +41,7 @@ public class Picker implements Worker {
             System.out.println("Бонус уже был выплачен");
         else if(warehouse.getCountPickedOrders() >= 10000) {
             isPayed = true;
-            salary += bonus;
+            salary += BONUS;
         }
         else
             System.out.println("Бонус пока не доступен");

@@ -1,13 +1,20 @@
 package day11.task2;
 
-public abstract class Hero {
+public abstract class Hero implements PhysAttack {
+    protected final int MIN_HEALTH = 0;
+    protected final int MAX_HEALTH = 100;
     private int health;
-    private double physDef, magicDef;
+    protected int physAtt;
+    protected double physDef, magicDef;
 
-    public Hero(double physDef, double magicDef) {
+    public Hero() {
         health = 100;
-        this.physDef = physDef;
-        this.magicDef = magicDef;
+    }
+
+    public void physicalAttack(Hero hero){
+        if(hero.getHealth()-physAtt*(1-hero.getPhysDef()) < MIN_HEALTH)
+            hero.setHealth(MIN_HEALTH);
+        else hero.setHealth((int) (hero.getHealth()-physAtt*(1-hero.getPhysDef())));
     }
 
     public void setHealth(int health) {

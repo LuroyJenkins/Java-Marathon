@@ -20,7 +20,7 @@ public class Task2 {
         paladin.healHimself();
         System.out.println(paladin);
         System.out.println();
-        for (int i = 0; i <= 5; i++){
+        for (int i = 0; i < 5; i++){
             warrior.physicalAttack(magician);
             System.out.println(magician);
         }

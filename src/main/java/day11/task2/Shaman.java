@@ -1,12 +1,14 @@
 package day11.task2;
 
-public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
-    private int physAtt, magicAtt;
+public class Shaman extends Hero implements MagicAttack, Healer {
+    private int magicAtt;
 
     public Shaman() {
-        super(0.2,0.2);
-        physAtt = 10;
+        super();
         magicAtt = 15;
+        physAtt = 10;
+        magicDef = 0.2;
+        physDef = 0.2;
     }
 
     @Override
@@ -16,29 +18,22 @@ public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
 
     @Override
     public void healHimself() {
-        super.setHealth(getHealth()+25);
-        if(super.getHealth() > 100)
-            super.setHealth(100);
+        if(getHealth()+50 > MAX_HEALTH)
+            setHealth(MAX_HEALTH);
+        else setHealth(getHealth()+50);
     }
 
     @Override
     public void healTeammate(Hero hero) {
-        hero.setHealth(getHealth()+10);
-        if(hero.getHealth() > 100)
-            hero.setHealth(100);
+        if(hero.getHealth()+30 > MAX_HEALTH)
+            hero.setHealth(MAX_HEALTH);
+        else hero.setHealth(getHealth()+30);
     }
 
     @Override
     public void magicalAttack(Hero hero) {
-        hero.setHealth((int) (hero.getHealth()-magicAtt*(1-hero.getMagicDef())));
-        if(hero.getHealth() < 0)
-            hero.setHealth(0);
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        hero.setHealth((int) (hero.getHealth()-physAtt*(1-hero.getPhysDef())));
-        if(hero.getHealth() < 0)
-            hero.setHealth(0);
+        if(hero.getHealth()-magicAtt*(1-hero.getMagicDef()) < MIN_HEALTH)
+            hero.setHealth(MIN_HEALTH);
+        else hero.setHealth((int) (hero.getHealth()-magicAtt*(1-hero.getMagicDef())));
     }
 }
