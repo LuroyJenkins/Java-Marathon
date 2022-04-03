@@ -28,7 +28,7 @@ public class Task1 {
         System.out.println(u1.isFriend(u3));
         System.out.println(u3.isFriend(u1));
 
-        MessageDatabase.showDialog(u1,u3);
-        //System.out.println(MessageDatabase.getMessages());
+        //MessageDatabase.showDialog(u1,u3);
+        System.out.println(MessageDatabase.getMessages());
     }
 }
