@@ -19,22 +19,20 @@ public class Task2 {
         try {
             scanner = new Scanner(file);
             while(scanner.hasNextLine()){
-                try{
                     String line = scanner.nextLine();
                     String[] nameLine = line.split(" ");
                     if(Integer.parseInt(nameLine[1]) < 0)
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("Некорректный входной файл");
                     nameList.add(line);
-                }
-                catch(IllegalArgumentException e){
-                    System.out.println("Некорректный входной файл");
-                    nameList.clear();
-                }
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            nameList.clear();
+        }
+        catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         }
-
         return nameList;
     }
 }
