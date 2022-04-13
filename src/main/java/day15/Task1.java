@@ -17,12 +17,12 @@ public class Task1 {
             PrintWriter pw = new PrintWriter(missingShoes);
             scanner = new Scanner(shoes);
             while (scanner.hasNextLine()) {
-                String File = scanner.nextLine();
-                String[] masShoes = File.split(";");
+                String file = scanner.nextLine();
+                String[] masShoes = file.split(";");
                 if (masShoes.length != 3)
                     throw new IllegalArgumentException("Некорректный входной файл");
                 if(Integer.parseInt(masShoes[2]) == 0)
-                    pw.println(File);
+                    pw.println(file);
             }
             pw.close();
             scanner.close();
