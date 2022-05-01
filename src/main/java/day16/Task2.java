@@ -30,7 +30,7 @@ public class Task2 {
 
     for(int i = 0; i<=49; i++){
         for(int j=0; j<=19; j++){
-            sum+=numbers[i*j];
+            sum+=numbers[(i+1)*(j+1)-1];
         }
         str.append((double) sum/20 + " ");
         sum = 0;

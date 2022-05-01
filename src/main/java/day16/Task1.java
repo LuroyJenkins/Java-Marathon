@@ -17,8 +17,8 @@ public class Task1 {
 
         try {
             scanner = new Scanner(file);
-            String File = scanner.nextLine();
-            String[] numbers = File.split(" ");
+            String f = scanner.nextLine();
+            String[] numbers = f.split(" ");
             for (String number: numbers) {
                 sum += Integer.parseInt(number);
                 count++;
