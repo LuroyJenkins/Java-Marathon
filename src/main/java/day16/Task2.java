@@ -10,36 +10,33 @@ public class Task2 {
     public static void main(String[] args) throws FileNotFoundException {
         File file1 = new File("src/main/resources/file1.txt");
         File file2 = new File("src/main/resources/file2.txt");
-        file1.getParentFile().mkdirs();
-        file2.getParentFile().mkdirs();
 
-    StringBuilder str = new StringBuilder();
-    int[] numbers = new int[1000];
-    int sum = 0;
-    Random rand = new Random();
-    PrintWriter pw = new PrintWriter(file1);
+        StringBuilder str = new StringBuilder();
+        Random rand = new Random();
+        PrintWriter pw = new PrintWriter(file1);
 
-    for(int i = 0; i<=999; i++){
-        numbers[i] = rand.nextInt(100);
-        str.append(numbers[i]+" ");
-    }
+        for (int i = 0; i < 1000; i++)
+            pw.println(rand.nextInt(100));
 
-    pw.println(str);
-    pw.close();
-    str.setLength(0);
+        pw.close();
 
-    for(int i = 0; i<=49; i++){
-        for(int j=0; j<=19; j++){
-            sum+=numbers[(i+1)*(j+1)-1];
+        Scanner scanner = new Scanner(file1);
+        PrintWriter pw2 = new PrintWriter(file2);
+        int counter = 0;
+        int sum = 0;
+        while (scanner.hasNextLine()) {
+            sum += Integer.parseInt(scanner.nextLine());
+            counter++;
+
+            if (counter == 20) {
+                pw2.println(sum / 20.0);
+
+                counter = 0;
+                sum = 0;
+            }
         }
-        str.append((double) sum/20 + " ");
-        sum = 0;
-    }
 
-    pw = new PrintWriter(file2);
-    pw.println(str);
-    pw.close();
-
+        pw2.close();
     printResult(file2);
     }
 
